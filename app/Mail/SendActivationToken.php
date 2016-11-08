@@ -32,6 +32,6 @@ class SendActivationToken extends Mailable
      */
     public function build()
     {
-        return $this->view('email.activation');
+        return $this->subject('Activate your account. ')->view('email.activation');
     }
 }

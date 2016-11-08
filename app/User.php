@@ -28,6 +28,12 @@ class User extends Authenticatable
     ];
     
     
+    public static function byEmail($email)
+    {
+        return static::where('email', $email);
+    }
+    
+    
     public function activationToken()
     {
         return $this->hasOne(ActivationToken::class);
