@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 
-use Mail;
-
-use App\Mail\SendActivationToken;
 
 use Illuminate\Http\Request;
 
@@ -89,11 +86,7 @@ class RegisterController extends Controller
     {
         Auth::logout();
         
-        $token = $user->activationToken()->create([
-            'token' => str_random(128),
-            ]);
-            
-            Mail::to($user)->send(new SendActivationToken($token));
+     
             
             return redirect('/login')->withInfo('Please now acivate your account');
             
